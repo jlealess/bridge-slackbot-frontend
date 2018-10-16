@@ -5,9 +5,10 @@ import "./App.css";
 import { pollGroup } from "./api";
 
 class App extends Component {
-  componentDidMount() {
-    pollGroup();
-  }
+  // uncomment this to test that you are connected to the backend!
+  // componentDidMount() {
+  //   pollGroup();
+  // }
   render() {
     return (
       <div className="App">
