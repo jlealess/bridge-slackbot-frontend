@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import { pollGroup } from "./api";
 
 class App extends Component {
+  componentDidMount() {
+    pollGroup();
+  }
   render() {
     return (
       <div className="App">
