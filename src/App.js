@@ -1,9 +1,20 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import logo from "./logo.svg";
+import { connect } from "react-redux";
 import "./App.css";
 
+import Header from "./components/Header";
+import { ThemeProvider } from "styled-components";
 // import { pollGroup } from "./api";
+
+const theme = {
+  bridgeBlue: '#000c9e',
+  bridgeGreen: '#08c39d',
+  bridgeTurquoise: '#65b8de',
+  bridgePink: '#eb2ca8',
+  black: '#393939',
+  offWhite: '#ededed',
+  lightGrey: '#e1e1e1',
+};
 
 class App extends Component {
   // uncomment this to test that you are connected to the backend!
@@ -12,15 +23,9 @@ class App extends Component {
   // }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Header />
+      </ThemeProvider>
     );
   }
 }
