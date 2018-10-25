@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// import { pollGroup } from "./api";
+import { ThemeProvider } from "styled-components";
 import "./App.css";
 
 import Header from "./components/Header";
-import { ThemeProvider } from "styled-components";
-// import { pollGroup } from "./api";
+import NewPoll from "./components/NewPoll";
 
 const theme = {
-  bridgeBlue: '#000c9e',
-  bridgeGreen: '#08c39d',
-  bridgeTurquoise: '#65b8de',
-  bridgePink: '#eb2ca8',
-  black: '#393939',
-  offWhite: '#ededed',
-  lightGrey: '#e1e1e1',
+    black: "#525252",
+    borderRadius: "3px",
+    bridgeBlue: "#000c9e",
+    bridgeGreen: "#08c39d",
+    bridgeLogoBlue: "#4e57ca",
+    bridgeLogoPink: "#eb2c97",
+    bridgeLogoTurquoise: "#2fa1d4",
+    bridgePink: "#eb2ca8",
+    bridgeTurquoise: "#65b8de",
+    darkGrey: "#b1b1b1",
+    lightGrey: "#e1e1e1",
+    offWhite: "#f8f8f8",
 };
 
 class App extends Component {
@@ -24,7 +30,10 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Header />
+        <React.Fragment>
+          <Header />
+          <NewPoll />
+        </React.Fragment>
       </ThemeProvider>
     );
   }
