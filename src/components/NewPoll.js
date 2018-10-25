@@ -48,26 +48,24 @@ class NewPoll extends Component {
         return (
             <StyledPoll>
                 <div className="content-wrapper">
-                <h2>Create New Poll</h2>
-                <form>
-                    <div>
-                        <StyledLabel htmlFor="pollQuestion">Question:</StyledLabel>
-                        <StyledInput type="text" value="" name="pollQuestion" id="pollQuestion" />
-                    </div>
-                    <div>
-                        <StyledLabel htmlFor="pollUserGroup">User Group:</StyledLabel>
-                        <StyledSelect name="pollUserGroup" id="pollUserGroup">
-                            <option value="">Select a group</option>
-                            <option value="somethingElse">Something else</option>
-                            <option value="thirdThing">A third thing</option>
-                        </StyledSelect>
-                    </div>
-                    <div>
-                        <Button
-                            label="Submit Poll"
-                        />
-                    </div>
-                </form>
+                    <h2>Create New Poll</h2>
+                    <form>
+                        <div>
+                            <StyledLabel htmlFor="pollQuestion">Question:</StyledLabel>
+                            <StyledInput type="text" value="" name="pollQuestion" id="pollQuestion" />
+                        </div>
+                        <div>
+                            <StyledLabel htmlFor="pollUserGroup">User Group:</StyledLabel>
+                            <StyledSelect name="pollUserGroup" id="pollUserGroup">
+                                <option value="">Select a group</option>
+                                <option value="somethingElse">Something else</option>
+                                <option value="thirdThing">A third thing</option>
+                            </StyledSelect>
+                        </div>
+                        <div>
+                            <Button label="Submit Poll" />
+                        </div>
+                    </form>
                 </div>
             </StyledPoll>
         );
