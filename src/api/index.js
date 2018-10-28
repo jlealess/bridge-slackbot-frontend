@@ -14,3 +14,10 @@ export const pollGroup = () =>
     .then(response => {
       console.log(response);
     });
+
+export const getChannelsList = () => 
+  fetch(`${API_BASE_URL}/channels-list`)
+    .then(res => res.json())
+    .then(response => {
+      console.log(response);
+    });
