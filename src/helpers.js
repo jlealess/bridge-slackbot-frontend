@@ -1,0 +1,1 @@
+export const sortNameAlpha = (a, b) => (a.name > b.name) ? 1 : -1;

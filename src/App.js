@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import "./App.css";
 
 import Header from "./components/Header";
-import NewPoll from "./components/NewPoll";
+import NewPoll from "./components/NewPoll/NewPoll";
 
 const theme = {
     black: "#525252",
