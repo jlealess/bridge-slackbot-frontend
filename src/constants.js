@@ -2,4 +2,5 @@ export const BRIDGEBOT_ACTIONS = {
     SAVE_POLL_GROUPS: "bridgebot/SAVE_POLL_GROUPS",
     SET_POLL_GROUP: "bridgebot/SET_POLL_GROUP",
     SET_POLL_QUESTION: "bridgebot/SET_POLL_QUESTION",
+    SUBMIT_FORM: "bridgebot/SUBMIT_FORM",
 };

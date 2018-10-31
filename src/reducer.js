@@ -27,6 +27,9 @@ export const reducer = (state = INITIAL_STATE, action) => {
         pollQuestion: action.payload,
       }
     }
+    case BRIDGEBOT_ACTIONS.SUBMIT_FORM: {
+      return state;
+    }
     default:
       return state;
   }

@@ -9,6 +9,10 @@ const savePollGroups = pollGroups => ({
 const shapePollData = pollGroups =>
   pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));
 
+const submitForm = () => ({
+  type: BRIDGEBOT_ACTIONS.SUBMIT_FORM,
+});
+
 export const handleChangePollGroup = e => ({
   type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
   payload: e.target.value
@@ -18,6 +22,11 @@ export const handleChangePollQuestion = e => ({
     type: BRIDGEBOT_ACTIONS.SET_POLL_QUESTION,
     payload: e.target.value
 });
+
+export const handleFormSubmit = e => {
+  e.preventDefault();
+  submitForm(); 
+};
 
 export const fetchPollGroups = () => dispatch => {
   getChannelsList()

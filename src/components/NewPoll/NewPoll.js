@@ -9,6 +9,7 @@ import {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
+  handleFormSubmit,
 } from "./NewPoll.actions";
 
 const StyledPoll = styled.div`
@@ -21,7 +22,8 @@ class NewPoll extends Component {
   }
 
   render() {
-    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion } = this.props;
+    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion, handleFormSubmit } = this.props;
+    
     return (
       <StyledPoll>
         <div className="content-wrapper">
@@ -47,7 +49,7 @@ class NewPoll extends Component {
                 handleChange={handleChangePollGroup} />
             </div>
             <div>
-              <Button label="Submit Poll" />
+              <Button label="Submit Poll" handleClick={handleFormSubmit} />
             </div>
           </form>
         </div>
@@ -65,6 +67,7 @@ const mapDispatchToProps = {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
+  handleFormSubmit,
 };
 
 export default connect(
