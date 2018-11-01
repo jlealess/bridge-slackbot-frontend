@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { pollGroup, getChannelsList } from "./api";
+import { pollGroup, submitPollQuestion } from "./api";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 
@@ -26,7 +26,7 @@ class App extends Component {
   // uncomment this to test that you are connected to the backend!
   componentDidMount() {
     pollGroup();
-    getChannelsList();
+    submitPollQuestion();
   }
   render() {
     return (
