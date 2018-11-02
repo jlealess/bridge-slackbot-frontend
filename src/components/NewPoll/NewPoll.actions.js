@@ -1,5 +1,5 @@
 import { BRIDGEBOT_ACTIONS } from "../../constants";
-import { getChannelsList } from "../../api/index";
+import { getChannelsList, submitPollQuestion } from "../../api/index";
 
 const savePollGroups = pollGroups => ({
   type: BRIDGEBOT_ACTIONS.SAVE_POLL_GROUPS,
@@ -23,9 +23,14 @@ export const handleChangePollQuestion = e => ({
     payload: e.target.value
 });
 
-export const handleFormSubmit = e => {
-  e.preventDefault();
-  submitForm(); 
+export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
+  
+  submitPollQuestion({pollQuestion, selectedPollGroup})
+    .then(res => res.json())
+    .then(response => {
+      console.log(response);
+    })
+    .then(dispatch(submitForm()));
 };
 
 export const fetchPollGroups = () => dispatch => {
@@ -35,3 +40,4 @@ export const fetchPollGroups = () => dispatch => {
     .then(pollGroups => shapePollData(pollGroups))
     .then(pollGroups => dispatch(savePollGroups(pollGroups)));
 };
+

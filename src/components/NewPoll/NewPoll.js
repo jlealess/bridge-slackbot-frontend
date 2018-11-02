@@ -22,45 +22,36 @@ class NewPoll extends Component {
   }
 
   render() {
-    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion, handleFormSubmit } = this.props;
+    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion, handleFormSubmit, selectedPollGroup } = this.props;
     
-    return (
-      <StyledPoll>
+    return <StyledPoll>
         <div className="content-wrapper">
           <h2>Create New Poll</h2>
-          <form>
+          <form onSubmit={e => {
+              e.preventDefault();
+              handleFormSubmit(pollQuestion, selectedPollGroup);
+            }}>
             <div>
-              <Label 
-                forValue="pollQuestion" 
-                text="Question" />
-              <Input 
-                type="text" 
-                value={pollQuestion} 
-                handleChange={handleChangePollQuestion} 
-                name="pollQuestion" />
+              <Label forValue="pollQuestion" text="Question" />
+              <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
             </div>
             <div>
-              <Label 
-                forValue="pollUserGroup" 
-                text="User Group" />
-              <Select 
-                name="pollGroups" 
-                values={pollGroups} 
-                handleChange={handleChangePollGroup} />
+              <Label forValue="pollUserGroup" text="User Group" />
+              <Select name="pollGroups" values={pollGroups} handleChange={handleChangePollGroup} />
             </div>
             <div>
-              <Button label="Submit Poll" handleClick={handleFormSubmit} />
+              <Button label="Submit Poll" />
             </div>
           </form>
         </div>
-      </StyledPoll>
-    );
+      </StyledPoll>;
   }
 }
 
 const mapStateToProps = (state) => ({
   pollGroups: state.pollGroups,
   pollQuestion: state.pollQuestion,
+  selectedPollGroup: state.selectedPollGroup,
 });
 
 const mapDispatchToProps = {

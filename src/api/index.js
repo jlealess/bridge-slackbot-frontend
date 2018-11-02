@@ -17,19 +17,11 @@ export const pollGroup = () =>
 
 export const getChannelsList = () => fetch(`${API_BASE_URL}/channels-list`);
 
-export const submitPollQuestion = () => {
-  console.log("hello");
-  fetch(`${API_BASE_URL}/submit-poll-question`, {
+export const submitPollQuestion = (payload) => {
+  return fetch(`${API_BASE_URL}/submit-poll-question`, {
     method: "post",
     body: JSON.stringify({
-      payload: {
-        channel: "slackbot-testing",
-        question: "How you doing?"
-      }
-    })
+      payload
+    }),
   })
-   .then(res => res.json())
-   .then(response => {
-      console.log(response.message);
-    });
 }
