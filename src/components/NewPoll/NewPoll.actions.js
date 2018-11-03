@@ -1,16 +1,25 @@
 import { BRIDGEBOT_ACTIONS } from "../../constants";
-import { getChannelsList, submitPollQuestion } from "../../api/index";
+import {
+  getChannelsList,
+  getUsersInChannel,
+  submitPollQuestion
+} from "../../api/index";
 
 const savePollGroups = pollGroups => ({
   type: BRIDGEBOT_ACTIONS.SAVE_POLL_GROUPS,
   payload: pollGroups
 });
 
+const saveUsers = users => ({
+  type: BRIDGEBOT_ACTIONS.SAVE_USERS,
+  payload: users
+});
+
 const shapePollData = pollGroups =>
   pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));
 
-const submitForm = () => ({
-  type: BRIDGEBOT_ACTIONS.SUBMIT_FORM,
+const resetForm = () => ({
+  type: BRIDGEBOT_ACTIONS.RESET_FORM,
 });
 
 export const handleChangePollGroup = e => ({
@@ -24,13 +33,14 @@ export const handleChangePollQuestion = e => ({
 });
 
 export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
+  getUsersInChannel(selectedPollGroup)
+    .then(res => res.json())
+    .then(response => response.members)
+    .then(users => dispatch(saveUsers(users)));
   
   submitPollQuestion({pollQuestion, selectedPollGroup})
     .then(res => res.json())
-    .then(response => {
-      console.log(response);
-    })
-    .then(dispatch(submitForm()));
+    .then(dispatch(resetForm()));
 };
 
 export const fetchPollGroups = () => dispatch => {
