@@ -1,4 +1,4 @@
-import { BRIDGEBOT_ACTIONS } from "../../constants";
+import { BRIDGEBOT_ACTIONS } from "../../reducer";
 import {
   getChannelsList,
   getUsersInChannel,

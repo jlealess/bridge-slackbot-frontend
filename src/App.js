@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import "./App.css";
 
 import Header from "./components/Header";
-import NewPoll from "./components/NewPoll/NewPoll";
+import Main from "./components/Main";
 
 const theme = {
     black: "#525252",
@@ -32,7 +32,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <React.Fragment>
           <Header />
-          <NewPoll />
+          <Main />
         </React.Fragment>
       </ThemeProvider>
     );
