@@ -22,8 +22,8 @@ const StyledSelect = styled.select`
   width: 100%;
 `;
 
-const Select = ({ handleChange, name, values }) => (
-  <StyledSelect name={name} id={name} onChange={handleChange}>
+const Select = ({ handleChange, name, values, value }) => (
+  <StyledSelect name={name} value={value} id={name} onChange={handleChange}>
     <option value="">Select a group</option>
     {values.sort(sortNameAlpha).map(value => (
         <option value={value.id} key={value.id}>{value.name}</option>

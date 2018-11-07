@@ -10,6 +10,7 @@ import {
   handleChangePollGroup,
   handleChangePollQuestion,
   handleFormSubmit,
+  getPollQuestions,
 } from "./NewPoll.actions";
 
 const StyledPoll = styled.div`
@@ -19,6 +20,7 @@ const StyledPoll = styled.div`
 class NewPoll extends Component {
   componentDidMount() {
     this.props.fetchPollGroups();
+    this.props.getPollQuestions();
   }
 
   render() {
@@ -37,7 +39,7 @@ class NewPoll extends Component {
           </div>
           <div>
             <Label forValue="pollUserGroup" text="User Group" />
-            <Select name="pollGroups" values={pollGroups} handleChange={handleChangePollGroup} />
+            <Select name="pollGroups" value={selectedPollGroup} values={pollGroups} handleChange={handleChangePollGroup} />
           </div>
           <div>
             <Button label="Submit Poll" />
@@ -59,6 +61,7 @@ const mapDispatchToProps = {
   handleChangePollGroup,
   handleChangePollQuestion,
   handleFormSubmit,
+  getPollQuestions,
 };
 
 export default connect(
