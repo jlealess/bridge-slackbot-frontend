@@ -1,8 +1,5 @@
 export const BRIDGEBOT_ACTIONS = {
-<<<<<<< HEAD
   GET_POLL_QUESTIONS: "bridgebot/GET_POLL_QUESTIONS",
-=======
->>>>>>> Adds router and stub for Poll component
   RESET_FORM: "bridgebot/RESET_FORM",
   SAVE_POLL_ID: "bridgebot/SAVE_POLL_ID",
   SAVE_POLL_GROUPS: "bridgebot/SAVE_POLL_GROUPS",
@@ -13,6 +10,7 @@ export const BRIDGEBOT_ACTIONS = {
 export const INITIAL_STATE = {
   pollGroups: [],
   pollQuestion: "",
+  polls: [],
   savedPollId: "",
   selectedPollGroup: "",
   selectedPollGroupUsers: [],
