@@ -5,7 +5,6 @@ import Button from "../Button";
 import Input from "../Input";
 import Label from "../Label";
 import Select from "../Select";
-// import Chart from "../Chart";
 import SuccessMessage from "../SuccessMessage";
 import {
   fetchPollGroups,

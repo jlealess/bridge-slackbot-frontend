@@ -26,3 +26,16 @@ a:hover {
   max-width: 800px;
   padding: 0 30px;
 }
+<<<<<<< HEAD
+=======
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+>>>>>>> Initial commit for feedback on successful form submit
