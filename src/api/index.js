@@ -33,7 +33,6 @@ export const submitPollQuestion = (payload) => {
   })
 }
 
-
 export const fetchPollQuestions = (payload) => {
   return fetch(`${API_BASE_URL}/polls`, {
     method: "get"

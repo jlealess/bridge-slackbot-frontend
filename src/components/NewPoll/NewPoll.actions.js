@@ -6,6 +6,10 @@ import {
   fetchPollQuestions
 } from "../../api/index";
 
+const resetForm = () => ({
+  type: BRIDGEBOT_ACTIONS.RESET_FORM
+});
+
 const savePollGroups = pollGroups => ({
   type: BRIDGEBOT_ACTIONS.SAVE_POLL_GROUPS,
   payload: pollGroups
@@ -17,11 +21,9 @@ const saveUsers = users => ({
 });
 
 const shapePollData = pollGroups =>
-  pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));
+  pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));  
 
-const resetForm = () => ({
-  type: BRIDGEBOT_ACTIONS.RESET_FORM,
-});
+// const setSuccessMessage = pollId => 
 
 export const handleChangePollGroup = e => ({
   type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
@@ -38,9 +40,12 @@ export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch =>
     .then(res => res.json())
     .then(response => response.members)
     .then(users => dispatch(saveUsers(users)));
+
+  const pollId = Date.now();  
   
-  submitPollQuestion({pollQuestion, selectedPollGroup})
+  submitPollQuestion({pollQuestion, selectedPollGroup, pollId})
     .then(res => res.json())
+    .then(res => console.log(res))
     .then(dispatch(resetForm()));
 };
 
