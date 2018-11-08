@@ -2,17 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: ${props => (props.primary ? props.theme.bridgeGreen : props.theme.offWhite)};
+  background-color: ${props => props.theme.bridgeGreen};
   border: none;
   border-radius: ${props => props.theme.borderRadius};
-  color: ${props => (props.primary ? "white" : props.theme.bridgeGreen)};
+  color: ${props => "white"};
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 50px;
 `;
 
-const Button = ({ handleClick, label, primary, disabled }) => (
-  <StyledButton onClick={handleClick} primary={primary} disabled={disabled}>{label}</StyledButton>
+const Button = ({ handleClick, label, disabled }) => (
+  <StyledButton onClick={handleClick} disabled={disabled}>{label}</StyledButton>
 );
 
 export default Button;

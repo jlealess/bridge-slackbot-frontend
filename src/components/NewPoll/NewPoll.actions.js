@@ -15,39 +15,23 @@ const savePollGroups = pollGroups => ({
   payload: pollGroups
 });
 
+const savePollId = id => ({
+  type: BRIDGEBOT_ACTIONS.SAVE_POLL_ID,
+  payload: id,
+});
+
+const savePolls = polls => ({
+    type: BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS,
+    payload: polls
+});
+
 const saveUsers = users => ({
   type: BRIDGEBOT_ACTIONS.SAVE_USERS,
-  payload: users
+  payload: users,
 });
 
 const shapePollData = pollGroups =>
   pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));  
-
-// const setSuccessMessage = pollId => 
-
-export const handleChangePollGroup = e => ({
-  type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
-  payload: e.target.value
-})
-
-export const handleChangePollQuestion = e => ({
-    type: BRIDGEBOT_ACTIONS.SET_POLL_QUESTION,
-    payload: e.target.value
-});
-
-export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
-  getUsersInChannel(selectedPollGroup)
-    .then(res => res.json())
-    .then(response => response.members)
-    .then(users => dispatch(saveUsers(users)));
-
-  const pollId = Date.now();  
-  
-  submitPollQuestion({pollQuestion, selectedPollGroup, pollId})
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .then(dispatch(resetForm()));
-};
 
 export const fetchPollGroups = () => dispatch => {
   getChannelsList()
@@ -57,7 +41,32 @@ export const fetchPollGroups = () => dispatch => {
     .then(pollGroups => dispatch(savePollGroups(pollGroups)));
 };
 
-export const getPollQuestions = () => (dispatch) => fetchPollQuestions().then(res => dispatch({
-  type: BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS,
-  payload: res
-}))
+export const getPollQuestions = () => dispatch => {
+  fetchPollQuestions()
+    .then(res => res.json())    
+    .then(res => res.message)
+    .then(message => dispatch(savePolls(message)));
+};
+
+export const handleChangePollGroup = e => ({
+  type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
+  payload: e.target.value,
+})
+
+export const handleChangePollQuestion = e => ({
+    type: BRIDGEBOT_ACTIONS.SET_POLL_QUESTION,
+    payload: e.target.value,
+});
+
+export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
+  getUsersInChannel(selectedPollGroup)
+    .then(res => res.json())
+    .then(response => response.members)
+    .then(users => dispatch(saveUsers(users)));
+  
+  submitPollQuestion({pollQuestion, selectedPollGroup})
+    .then(res => res.json())
+    .then(res => res.message)
+    .then(message => dispatch(savePollId(message)))
+    .then(dispatch(resetForm()));
+};
