@@ -50,7 +50,6 @@ export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch =>
   submitPollQuestion({pollQuestion, selectedPollGroup, pollId}) 
     .then(res => res.json())
     .then(res => res.message)
-    .then(message => dispatch(savePollId(message)))
+    .then(message => dispatch(savePollId(pollId)))
     .then(dispatch(resetForm()));
 };
-

@@ -2,7 +2,10 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import NewPoll from "./NewPoll/NewPoll";
 import Poll from "./Poll/Poll";
+<<<<<<< HEAD
 import Polls from "./Polls/Polls";
+=======
+>>>>>>> Adds new poll component, success message on form submit, and prevents empty form submission
 
 const Main = () => (
   <div className="main" role="main">

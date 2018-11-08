@@ -55,7 +55,6 @@ class NewPoll extends Component {
           )}
         </div>
       </form>
-      {/* <Chart /> */}
     </StyledPoll>;
   }
 }
