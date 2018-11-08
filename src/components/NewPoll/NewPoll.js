@@ -24,7 +24,7 @@ class NewPoll extends Component {
   }
 
   render() {
-    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion, handleFormSubmit, selectedPollGroup } = this.props;
+    const { pollGroups, pollQuestion, handleChangePollGroup, handleChangePollQuestion, handleFormSubmit, selectedPollGroup, submitFormSuccess } = this.props;
     
     return (
       <StyledPoll>
@@ -54,6 +54,7 @@ const mapStateToProps = (state) => ({
   pollGroups: state.pollGroups,
   pollQuestion: state.pollQuestion,
   selectedPollGroup: state.selectedPollGroup,
+  submitFormSuccess: state.submitFormSuccess,
 });
 
 const mapDispatchToProps = {

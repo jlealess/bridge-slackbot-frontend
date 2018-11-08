@@ -26,6 +26,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
         pollQuestion: "",
         savedPollId: "",
         selectedPollGroup: "",
+        submitFormSuccess: true,
       }
     }
     case BRIDGEBOT_ACTIONS.SAVE_POLL_ID: {
@@ -50,12 +51,14 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         selectedPollGroup: action.payload,
+        submitFormSuccess: false,
       }
     }
     case BRIDGEBOT_ACTIONS.SET_POLL_QUESTION: {
       return {
         ...state,
         pollQuestion: action.payload,
+        submitFormSuccess: false,
       }
     }
     case BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS: {
