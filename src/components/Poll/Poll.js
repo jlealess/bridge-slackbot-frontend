@@ -12,6 +12,7 @@ class Poll extends Component {
 
   componentDidMount() {
     const {pollId} = this.props.match.params;
+    console.log("I mounted!");
     this.getPoll(pollId)
       .then(res => res.json())      
       .then(res => res.message)

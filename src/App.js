@@ -7,6 +7,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
+import Polls from './components/Polls/Polls.js';
+
 const theme = {
     black: "#525252",
     borderRadius: "3px",
@@ -39,13 +41,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state;
-};
-const mapDispatchToProps = {
-
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-) (App);
+export default App;

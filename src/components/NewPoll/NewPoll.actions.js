@@ -3,7 +3,6 @@ import {
   getChannelsList,
   getUsersInChannel,
   submitPollQuestion,
-  fetchPollQuestions
 } from "../../api/index";
 
 const resetForm = () => ({
@@ -20,11 +19,6 @@ const savePollId = id => ({
   payload: id,
 });
 
-const savePolls = polls => ({
-    type: BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS,
-    payload: polls
-});
-
 const saveUsers = users => ({
   type: BRIDGEBOT_ACTIONS.SAVE_USERS,
   payload: users,
@@ -39,13 +33,6 @@ export const fetchPollGroups = () => dispatch => {
     .then(response => response.channels)
     .then(pollGroups => shapePollData(pollGroups))
     .then(pollGroups => dispatch(savePollGroups(pollGroups)));
-};
-
-export const getPollQuestions = () => dispatch => {
-  fetchPollQuestions()
-    .then(res => res.json())    
-    .then(res => res.message)
-    .then(message => dispatch(savePolls(message)));
 };
 
 export const handleChangePollGroup = e => ({
