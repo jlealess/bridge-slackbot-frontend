@@ -22,10 +22,18 @@ export const submitPollQuestion = (payload) => {
   })
 }
 
-
 export const fetchPollQuestions = (payload) => {
   return fetch(`${API_BASE_URL}/polls`, {
     method: "get"
-  }).then(res => res.json())
+  })
+}
+
+export const fetchSinglePollQuestion = (id) => {
+  return fetch(`${API_BASE_URL}/poll`, {
+    method: "post",
+    body: JSON.stringify({
+      id
+    })
+  });
 }
 

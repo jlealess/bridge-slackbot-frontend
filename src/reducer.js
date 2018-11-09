@@ -1,6 +1,7 @@
 export const BRIDGEBOT_ACTIONS = {
   GET_POLL_QUESTIONS: "bridgebot/GET_POLL_QUESTIONS",
   RESET_FORM: "bridgebot/RESET_FORM",
+  SAVE_POLL_ID: "bridgebot/SAVE_POLL_ID",
   SAVE_POLL_GROUPS: "bridgebot/SAVE_POLL_GROUPS",
   SET_POLL_GROUP: "bridgebot/SET_POLL_GROUP",
   SET_POLL_QUESTION: "bridgebot/SET_POLL_QUESTION",
@@ -9,19 +10,34 @@ export const BRIDGEBOT_ACTIONS = {
 export const INITIAL_STATE = {
   pollGroups: [],
   pollQuestion: "",
+  polls: [],
+  savedPollId: "",
   selectedPollGroup: "",
   selectedPollGroupUsers: [],
-  polls: [],
+  submitFormSuccess: false,
 }
 
 export const reducer = (state = INITIAL_STATE, action) => {
   if (!action) return state;
   switch (action.type) {
+    case BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS: {
+      return {
+        ...state,
+        polls: action.payload,
+      }
+    }
     case BRIDGEBOT_ACTIONS.RESET_FORM: {
       return {
         ...state,
         pollQuestion: "",
         selectedPollGroup: "",
+        submitFormSuccess: true,
+      }
+    }
+    case BRIDGEBOT_ACTIONS.SAVE_POLL_ID: {
+      return {
+        ...state,
+        savedPollId: action.payload,
       }
     }
     case BRIDGEBOT_ACTIONS.SAVE_POLL_GROUPS: {
@@ -30,22 +46,24 @@ export const reducer = (state = INITIAL_STATE, action) => {
         pollGroups: action.payload,
       }
     }
+    case BRIDGEBOT_ACTIONS.SAVE_USERS: {
+      return {
+        ...state,
+        selectedPollGroupUsers: action.payload,
+      }
+    }
     case BRIDGEBOT_ACTIONS.SET_POLL_GROUP: {
       return {
         ...state,
         selectedPollGroup: action.payload,
+        submitFormSuccess: false,
       }
     }
     case BRIDGEBOT_ACTIONS.SET_POLL_QUESTION: {
       return {
         ...state,
         pollQuestion: action.payload,
-      }
-    }
-    case BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS: {
-      return {
-        ...state,
-        polls: action.payload,
+        submitFormSuccess: false,
       }
     }
     default:
