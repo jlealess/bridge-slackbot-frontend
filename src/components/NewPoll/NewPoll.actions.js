@@ -11,11 +11,6 @@ const savePollGroups = pollGroups => ({
   payload: pollGroups
 });
 
-const saveUsers = users => ({
-  type: BRIDGEBOT_ACTIONS.SAVE_USERS,
-  payload: users
-});
-
 const shapePollData = pollGroups =>
   pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));
 
@@ -34,14 +29,10 @@ export const handleChangePollQuestion = e => ({
 });
 
 export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
-  getUsersInChannel(selectedPollGroup)
-    .then(res => res.json())
-    .then(response => response.members)
-    .then(users => dispatch(saveUsers(users)));
-  
   submitPollQuestion({pollQuestion, selectedPollGroup})
     .then(res => res.json())
-    .then(dispatch(resetForm()));
+    .then(dispatch(resetForm()))
+    .then(getUsersInChannel(selectedPollGroup));
 };
 
 export const fetchPollGroups = () => dispatch => {

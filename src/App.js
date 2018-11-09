@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { pollGroup } from "./api";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 
@@ -23,10 +22,6 @@ const theme = {
 };
 
 class App extends Component {
-  componentDidMount() {
-    pollGroup();
-  }
-  
   render() {
     return (
       <ThemeProvider theme={theme}>
