@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 
@@ -34,13 +33,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state;
-};
-const mapDispatchToProps = {
-
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-) (App);
+export default App;
