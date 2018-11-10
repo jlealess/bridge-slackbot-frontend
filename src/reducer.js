@@ -10,10 +10,6 @@ export const BRIDGEBOT_ACTIONS = {
 export const INITIAL_STATE = {
   pollGroups: [],
   pollQuestion: "",
-<<<<<<< HEAD
-  polls: [],
-=======
->>>>>>> Working on success message component
   savedPollId: "",
   selectedPollGroup: "",
   selectedPollGroupUsers: [],
@@ -51,15 +47,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
       }
     }
     case BRIDGEBOT_ACTIONS.SAVE_USERS: {
-<<<<<<< HEAD
-=======
-      return {
-        ...state,
-        selectedPollGroupUsers: action.payload,
-      }
-    }
-    case BRIDGEBOT_ACTIONS.SET_POLL_GROUP: {
->>>>>>> Working on success message component
       return {
         ...state,
         selectedPollGroupUsers: action.payload,
