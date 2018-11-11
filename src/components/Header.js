@@ -61,23 +61,6 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledNav = styled.nav`
-  a {
-    border-bottom: 2px solid ${props => props.theme.bridgeLogoBlue};
-    color: ${props => props.theme.bridgeLogoBlue};
-    font-weight: bold;
-    margin-left: 25px;
-
-    &:hover {
-      color: ${props => props.theme.bridgeLogoTurquoise};
-    }
-
-    &.current {
-      border-bottom: 2px solid ${props => props.theme.bridgeLogoPink};
-    }
-  }
-`;
-
 const Header = () => (
   <StyledHeader>
       <Link to={"/"}>
