@@ -10,17 +10,19 @@ body {
   font-size: 1.8rem;
 }
 
+a {
+  border-bottom: 1px dotted #525252;
+  color: #525252;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+  border-bottom: 1px solid #000c9e;
+  color: #000c9e;
+}
+
 .content-wrapper {
   max-width: 800px;
   padding: 0 30px;
-}
-
-.fade-enter {
-  opacity: 0;
-  z-index: 1;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 250ms ease-in;
 }

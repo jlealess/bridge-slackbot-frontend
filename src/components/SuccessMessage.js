@@ -6,10 +6,6 @@ const StyledMessage = styled.div`
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 0;
-
-  a {
-    color: ${props => props.theme.bridgeLogoBlue};
-  }
 `;
 
 const SuccessMessage = ({ savedPollId }) => (

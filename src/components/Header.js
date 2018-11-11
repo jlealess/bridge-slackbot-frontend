@@ -1,6 +1,7 @@
 import React from "react";
 import bridgeLogo from "./../bridgeLogo.svg";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledImg = styled.img`
   width: 80px;
@@ -17,7 +18,7 @@ const StyledHeader = styled.header`
     margin: 0;
     margin-left: 15px;
   }
-  .content-wrapper {
+  .logo {
     align-items: center;
     display: flex;
   }
@@ -26,8 +27,12 @@ const StyledHeader = styled.header`
 const Header = () => (
   <StyledHeader>
     <div className="content-wrapper">
-      <StyledImg src={bridgeLogo} alt="bridge logo" />
-      <h1>BridgeBot</h1>
+      <Link to={"/"}>
+        <div className="logo">        
+          <StyledImg src={bridgeLogo} alt="bridge logo" />
+          <h1>BridgeBot</h1>
+        </div>
+      </Link>  
     </div>
   </StyledHeader>
 );

@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { getPollQuestions } from "./Polls.actions";
+
+const PollList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const Poll = styled.li`
+  padding: 10px 0;
+`;
+
 
 class Polls extends Component {
   componentDidMount() {
@@ -14,15 +26,15 @@ class Polls extends Component {
     return <div>
       <h2>Previous Polls</h2>
       
-      <ul>
+      <PollList>
       {polls.map(poll => (
-      <li key={poll.id}>
+      <Poll key={poll.id}>
           <Link to={`/poll/${poll.id}`}>
             {poll.data.pollQuestion}
           </Link>
-        </li>
+        </Poll>
       ))}
-      </ul>
+      </PollList>
     </div>;
   }
 }
