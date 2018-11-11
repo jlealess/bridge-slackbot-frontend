@@ -9,6 +9,15 @@ const StyledButton = styled.button`
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 50px;
+  transition: all 0.5s ease-in-out;
+
+  &:disabled {
+    opacity: 0.7;
+  }
+
+  &:not(:disabled):hover {
+    background-color: ${props => props.theme.bridgeLogoTurquoise};
+  }
 `;
 
 const Button = ({ handleClick, label, disabled }) => (
