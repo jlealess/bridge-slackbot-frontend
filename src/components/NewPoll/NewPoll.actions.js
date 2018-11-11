@@ -54,7 +54,9 @@ export const handleChangePollQuestion = e => ({
 });
 
 export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
-  submitPollQuestion({pollQuestion, selectedPollGroup})
+  const pollId = Date.now();
+
+  submitPollQuestion({pollQuestion, selectedPollGroup, pollId})
     .then(res => res.json())
     .then(res => res.message)
     .then(message => dispatch(savePollId(message)))
