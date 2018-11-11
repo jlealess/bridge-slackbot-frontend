@@ -26,3 +26,16 @@ a:hover {
   max-width: 800px;
   padding: 0 30px;
 }
+<<<<<<< HEAD
+=======
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+>>>>>>> 8726b72f96bb11a017cb551074d9679365acf0b1

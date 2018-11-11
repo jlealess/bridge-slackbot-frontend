@@ -19,9 +19,15 @@ const savePollId = id => ({
   payload: id,
 });
 
+<<<<<<< HEAD
 const saveUsers = users => ({
   type: BRIDGEBOT_ACTIONS.SAVE_USERS,
   payload: users,
+=======
+const savePolls = polls => ({
+    type: BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS,
+    payload: polls
+>>>>>>> 8726b72f96bb11a017cb551074d9679365acf0b1
 });
 
 const shapePollData = pollGroups =>
@@ -34,6 +40,16 @@ export const fetchPollGroups = () => dispatch => {
     .then(pollGroups => shapePollData(pollGroups))
     .then(pollGroups => dispatch(savePollGroups(pollGroups)));
 };
+<<<<<<< HEAD
+=======
+
+export const getPollQuestions = () => dispatch => {
+  fetchPollQuestions()
+    .then(res => res.json())    
+    .then(res => res.message)
+    .then(message => dispatch(savePolls(message)));
+};
+>>>>>>> 8726b72f96bb11a017cb551074d9679365acf0b1
 
 export const handleChangePollGroup = e => ({
   type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
@@ -46,14 +62,13 @@ export const handleChangePollQuestion = e => ({
 });
 
 export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
-  getUsersInChannel(selectedPollGroup)
-    .then(res => res.json())
-    .then(response => response.members)
-    .then(users => dispatch(saveUsers(users)));
-  
   submitPollQuestion({pollQuestion, selectedPollGroup})
     .then(res => res.json())
     .then(res => res.message)
     .then(message => dispatch(savePollId(message)))
+<<<<<<< HEAD
+=======
+    .then(getUsersInChannel(selectedPollGroup))
+>>>>>>> 8726b72f96bb11a017cb551074d9679365acf0b1
     .then(dispatch(resetForm()));
 };
