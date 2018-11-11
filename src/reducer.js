@@ -12,6 +12,7 @@ export const INITIAL_STATE = {
   pollQuestion: "",
   savedPollId: "",
   selectedPollGroup: "",
+  selectedPollGroupName: "",
   selectedPollGroupUsers: [],
   submitFormSuccess: false,
 }
@@ -31,6 +32,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
         pollQuestion: "",
         savedPollId: "",
         selectedPollGroup: "",
+        selectedPollGroupName: "",
         submitFormSuccess: true,
       }
     }
@@ -53,9 +55,13 @@ export const reducer = (state = INITIAL_STATE, action) => {
       }
     }
     case BRIDGEBOT_ACTIONS.SET_POLL_GROUP: {
+      const pollGroup = action.payload.split("|");
+      const pollGroupName = pollGroup[1];
+      const pollGroupId = pollGroup[0];
       return {
         ...state,
-        selectedPollGroup: action.payload,
+        selectedPollGroup: pollGroupId,
+        selectedPollGroupName: pollGroupName,
         submitFormSuccess: false,
       }
     }
