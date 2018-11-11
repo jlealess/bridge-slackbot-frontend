@@ -1,7 +1,6 @@
 import { BRIDGEBOT_ACTIONS } from "../../reducer";
 import {
   getChannelsList,
-  getUsersInChannel,
   submitPollQuestion,
 } from "../../api/index";
 
@@ -17,11 +16,6 @@ const savePollGroups = pollGroups => ({
 const savePollId = id => ({
   type: BRIDGEBOT_ACTIONS.SAVE_POLL_ID,
   payload: id,
-});
-
-const saveUsers = users => ({
-  type: BRIDGEBOT_ACTIONS.SAVE_USERS,
-  payload: users,
 });
 
 const shapePollData = pollGroups =>

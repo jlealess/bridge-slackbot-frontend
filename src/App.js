@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
-
 import Header from "./components/Header";
 import Main from "./components/Main";
-
-import Polls from './components/Polls/Polls.js';
 
 const theme = {
     black: "#525252",
