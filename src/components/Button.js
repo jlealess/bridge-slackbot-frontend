@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   background-color: ${props => props.theme.bridgeGreen};
   border: none;
   border-radius: ${props => props.theme.borderRadius};
-  color: "white";
+  color: white;
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 50px;
