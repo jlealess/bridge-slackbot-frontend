@@ -32,24 +32,19 @@ export const fetchPollGroups = () => dispatch => {
 export const handleChangePollGroup = e => ({
   type: BRIDGEBOT_ACTIONS.SET_POLL_GROUP,
   payload: e.target.value,
-})
+});
 
 export const handleChangePollQuestion = e => ({
     type: BRIDGEBOT_ACTIONS.SET_POLL_QUESTION,
     payload: e.target.value,
 });
 
-export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch => {
-  getUsersInChannel(selectedPollGroup)
-    .then(res => res.json())
-    .then(response => response.members)
-    .then(users => dispatch(saveUsers(users)));
+export const handleFormSubmit = (pollQuestion, selectedPollGroup, selectedPollGroupName) => dispatch => {
+  const pollId = Date.now();
 
-  const pollId = Date.now(); 
-
-  submitPollQuestion({pollQuestion, selectedPollGroup, pollId}) 
+  submitPollQuestion({pollQuestion, selectedPollGroup, selectedPollGroupName, pollId})
     .then(res => res.json())
     .then(res => res.message)
-    .then(message => dispatch(savePollId(pollId)))
-    .then(dispatch(resetForm()));
+    .then(dispatch(resetForm()))
+    .then(dispatch(savePollId(String(pollId))))
 };

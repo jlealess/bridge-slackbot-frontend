@@ -30,14 +30,15 @@ class NewPoll extends Component {
       pollGroups, 
       pollQuestion, 
       savedPollId, 
-      selectedPollGroup, 
+      selectedPollGroup,
+      selectedPollGroupName,
       submitFormSuccess } = this.props;
     
     return <StyledPoll>
       <h2>Create New Poll</h2>
       <form onSubmit={e => {
           e.preventDefault();
-          handleFormSubmit(pollQuestion, selectedPollGroup);
+          handleFormSubmit(pollQuestion, selectedPollGroup, selectedPollGroupName);
         }}>
         <div>
           <Label forValue="pollQuestion" text="Question" />
@@ -64,7 +65,8 @@ const mapStateToProps = state => ({
   pollQuestion: state.pollQuestion,
   savedPollId: state.savedPollId,
   selectedPollGroup: state.selectedPollGroup,
-  submitFormSuccess: state.submitFormSuccess
+  selectedPollGroupName: state.selectedPollGroupName,
+  submitFormSuccess: state.submitFormSuccess,
 });
 
 const mapDispatchToProps = {
