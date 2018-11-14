@@ -1,9 +1,7 @@
 import { BRIDGEBOT_ACTIONS } from "../../reducer";
 import {
   getChannelsList,
-  getUsersInChannel,
   submitPollQuestion,
-  fetchPollQuestions
 } from "../../api/index";
 
 const resetForm = () => ({
@@ -20,11 +18,6 @@ const savePollId = id => ({
   payload: id,
 });
 
-const savePolls = polls => ({
-    type: BRIDGEBOT_ACTIONS.GET_POLL_QUESTIONS,
-    payload: polls
-});
-
 const shapePollData = pollGroups =>
   pollGroups.map(pollGroup => ({ id: pollGroup.id, name: pollGroup.name }));  
 
@@ -34,13 +27,6 @@ export const fetchPollGroups = () => dispatch => {
     .then(response => response.channels)
     .then(pollGroups => shapePollData(pollGroups))
     .then(pollGroups => dispatch(savePollGroups(pollGroups)));
-};
-
-export const getPollQuestions = () => dispatch => {
-  fetchPollQuestions()
-    .then(res => res.json())    
-    .then(res => res.message)
-    .then(message => dispatch(savePolls(message)));
 };
 
 export const handleChangePollGroup = e => ({
@@ -54,12 +40,11 @@ export const handleChangePollQuestion = e => ({
 });
 
 export const handleFormSubmit = (pollQuestion, selectedPollGroup, selectedPollGroupName) => dispatch => {
-  const pollId = Date.now();
+  const pollId = (Date.now()).toString();
 
   submitPollQuestion({pollQuestion, selectedPollGroup, selectedPollGroupName, pollId})
     .then(res => res.json())
     .then(res => res.message)
-    .then(getUsersInChannel(selectedPollGroup))
-    .then(dispatch(resetForm()))
-    .then(dispatch(savePollId(String(pollId))))
+    .then(message => dispatch(savePollId(pollId)))
+    .then(dispatch(resetForm()));
 };

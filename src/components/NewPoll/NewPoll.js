@@ -45,7 +45,7 @@ class NewPoll extends Component {
           <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
         </div>
         <div>
-          <Label forValue="pollUserGroup" text="User Group" />
+          <Label forValue="pollUserGroup" text="Channel" />
           <Select name="pollGroups" value={selectedPollGroup} values={pollGroups} handleChange={handleChangePollGroup} />
         </div>
         <div>
