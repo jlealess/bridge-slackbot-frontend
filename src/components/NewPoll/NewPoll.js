@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Button from "../Button";
@@ -10,7 +10,7 @@ import {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
-  handleFormSubmit,
+  handleFormSubmit
 } from "./NewPoll.actions";
 
 const StyledPoll = styled.div`
@@ -57,10 +57,11 @@ class NewPoll extends Component {
         </div>
       </form>
     </StyledPoll>;
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   pollGroups: state.pollGroups,
   pollQuestion: state.pollQuestion,
   savedPollId: state.savedPollId,
@@ -73,10 +74,10 @@ const mapDispatchToProps = {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
-  handleFormSubmit,
+  handleFormSubmit
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(NewPoll);

@@ -7,7 +7,8 @@ const StyledSelect = styled.select`
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='${props => props.theme.darkGrey}'><polygon points='0,0 20,0 10,10'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='${props =>
+    props.theme.darkGrey}'><polygon points='0,0 20,0 10,10'/></svg>");
   background-position-x: calc(100% - 10px);
   background-position-y: 15px;
   background-repeat: no-repeat;
