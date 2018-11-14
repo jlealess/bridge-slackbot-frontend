@@ -57,7 +57,6 @@ class NewPoll extends Component {
         </div>
       </form>
     </StyledPoll>;
-    );
   }
 }
 
