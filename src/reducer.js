@@ -10,6 +10,7 @@ export const BRIDGEBOT_ACTIONS = {
 export const INITIAL_STATE = {
   pollGroups: [],
   pollQuestion: "",
+  polls: [],
   savedPollId: "",
   selectedPollGroup: "",
   selectedPollGroupName: "",
