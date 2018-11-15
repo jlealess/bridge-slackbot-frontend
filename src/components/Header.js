@@ -31,6 +31,13 @@ const StyledHeader = styled.header`
     align-items: center;
     display: flex;
   }
+
+  @media (max-width: 500px) {
+    justify-content: flex-start;
+    line-height: 2;
+    flex-wrap: wrap;
+    padding: 10px 30px 20px;
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -46,6 +53,10 @@ const StyledNav = styled.nav`
 
     &.current {
       border-bottom: 2px solid ${props => props.theme.bridgeLogoPink};
+    }
+
+    @media (max-width: 500px) {
+      margin: 10px 25px 10px 0;
     }
   }
 `;
