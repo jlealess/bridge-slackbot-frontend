@@ -5,14 +5,14 @@ const StyledButton = styled.button`
   background-color: ${props => props.theme.bridgeGreen};
   border: none;
   border-radius: ${props => props.theme.borderRadius};
-  color: ${props => "white"};
+  color: white;
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 50px;
   transition: all 0.5s ease-in-out;
 
   &:disabled {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
   &:not(:disabled):hover {

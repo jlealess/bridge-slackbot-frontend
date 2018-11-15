@@ -73,7 +73,6 @@ const Header = () => (
         <NavLink activeClassName="current" to={"/new-poll"}>New Poll</NavLink>
         <NavLink activeClassName="current" to={"/polls"}>All Polls</NavLink>
       </StyledNav>
-
   </StyledHeader>
 );
 

@@ -5,7 +5,6 @@ import Button from "../Button";
 import Input from "../Input";
 import Label from "../Label";
 import Select from "../Select";
-// import Chart from "../Chart";
 import SuccessMessage from "../SuccessMessage";
 import {
   fetchPollGroups,
@@ -31,21 +30,22 @@ class NewPoll extends Component {
       pollGroups, 
       pollQuestion, 
       savedPollId, 
-      selectedPollGroup, 
+      selectedPollGroup,
+      selectedPollGroupName,
       submitFormSuccess } = this.props;
     
     return <StyledPoll>
       <h2>Create New Poll</h2>
       <form onSubmit={e => {
           e.preventDefault();
-          handleFormSubmit(pollQuestion, selectedPollGroup);
+          handleFormSubmit(pollQuestion, selectedPollGroup, selectedPollGroupName);
         }}>
         <div>
           <Label forValue="pollQuestion" text="Question" />
           <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
         </div>
         <div>
-          <Label forValue="pollUserGroup" text="User Group" />
+          <Label forValue="pollUserGroup" text="Channel" />
           <Select name="pollGroups" value={selectedPollGroup} values={pollGroups} handleChange={handleChangePollGroup} />
         </div>
         <div>
@@ -56,7 +56,6 @@ class NewPoll extends Component {
           )}
         </div>
       </form>
-      {/* <Chart /> */}
     </StyledPoll>;
   }
 }
@@ -66,7 +65,8 @@ const mapStateToProps = state => ({
   pollQuestion: state.pollQuestion,
   savedPollId: state.savedPollId,
   selectedPollGroup: state.selectedPollGroup,
-  submitFormSuccess: state.submitFormSuccess
+  selectedPollGroupName: state.selectedPollGroupName,
+  submitFormSuccess: state.submitFormSuccess,
 });
 
 const mapDispatchToProps = {

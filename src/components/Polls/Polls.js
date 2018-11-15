@@ -14,7 +14,6 @@ const Poll = styled.li`
   padding: 10px 0;
 `;
 
-
 class Polls extends Component {
   componentDidMount() {
     this.props.getPollQuestions();
@@ -25,7 +24,6 @@ class Polls extends Component {
 
     return <div>
       <h2>Previous Polls</h2>
-      
       <PollList>
       {polls.map(poll => (
       <Poll key={poll.id}>
