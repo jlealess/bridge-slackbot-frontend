@@ -11,7 +11,6 @@ export const INITIAL_STATE = {
   pollGroups: [],
   polls: [],
   pollQuestion: "",
-  polls: [],
   savedPollId: "",
   selectedPollGroup: "",
   selectedPollGroupName: "",
