@@ -5,12 +5,13 @@ import Button from "../Button";
 import Input from "../Input";
 import Label from "../Label";
 import Select from "../Select";
+// import Chart from "../Chart";
 import SuccessMessage from "../SuccessMessage";
 import {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
-  handleFormSubmit
+  handleFormSubmit,
 } from "./NewPoll.actions";
 
 const StyledPoll = styled.div`
@@ -23,57 +24,40 @@ class NewPoll extends Component {
   }
 
   render() {
-    const {
-      handleChangePollGroup,
-      handleChangePollQuestion,
-      handleFormSubmit,
-      pollGroups,
-      pollQuestion,
-      savedPollId,
-      selectedPollGroup,
-      submitFormSuccess
-    } = this.props;
-
-    return (
-      <StyledPoll>
-        <h2>Create New Poll</h2>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            handleFormSubmit(pollQuestion, selectedPollGroup);
-          }}
-        >
-          <div>
-            <Label forValue="pollQuestion" text="Question" />
-            <Input
-              type="text"
-              value={pollQuestion}
-              handleChange={handleChangePollQuestion}
-              name="pollQuestion"
-            />
-          </div>
-          <div>
-            <Label forValue="pollUserGroup" text="Channel" />
-            <Select
-              name="pollGroups"
-              value={selectedPollGroup}
-              values={pollGroups}
-              handleChange={handleChangePollGroup}
-            />
-          </div>
-          <div>
-            {submitFormSuccess ? (
-              <SuccessMessage savedPollId={savedPollId} />
-            ) : (
-              <Button
-                label="Submit Poll"
-                disabled={!(pollQuestion.length && selectedPollGroup.length)}
-              />
-            )}
-          </div>
-        </form>
-      </StyledPoll>
-    );
+    const { 
+      handleChangePollGroup, 
+      handleChangePollQuestion, 
+      handleFormSubmit, 
+      pollGroups, 
+      pollQuestion, 
+      savedPollId, 
+      selectedPollGroup, 
+      submitFormSuccess } = this.props;
+    
+    return <StyledPoll>
+      <h2>Create New Poll</h2>
+      <form onSubmit={e => {
+          e.preventDefault();
+          handleFormSubmit(pollQuestion, selectedPollGroup);
+        }}>
+        <div>
+          <Label forValue="pollQuestion" text="Question" />
+          <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
+        </div>
+        <div>
+          <Label forValue="pollUserGroup" text="User Group" />
+          <Select name="pollGroups" value={selectedPollGroup} values={pollGroups} handleChange={handleChangePollGroup} />
+        </div>
+        <div>
+          {submitFormSuccess ? (
+            <SuccessMessage savedPollId={savedPollId} />
+          ) : (
+            <Button label="Submit Poll" disabled={!(pollQuestion.length && selectedPollGroup.length)} />
+          )}
+        </div>
+      </form>
+      {/* <Chart /> */}
+    </StyledPoll>;
   }
 }
 
@@ -89,7 +73,7 @@ const mapDispatchToProps = {
   fetchPollGroups,
   handleChangePollGroup,
   handleChangePollQuestion,
-  handleFormSubmit
+  handleFormSubmit,
 };
 
 export default connect(

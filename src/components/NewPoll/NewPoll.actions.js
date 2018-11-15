@@ -48,3 +48,4 @@ export const handleFormSubmit = (pollQuestion, selectedPollGroup) => dispatch =>
     .then(message => dispatch(savePollId(message)))
     .then(dispatch(resetForm()));
 };
+

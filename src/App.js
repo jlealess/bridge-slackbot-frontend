@@ -20,6 +20,7 @@ const theme = {
 };
 
 class App extends Component {
+  // uncomment this to test that you are connected to the backend!
   render() {
     return (
       <ThemeProvider theme={theme}>

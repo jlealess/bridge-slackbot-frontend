@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Chart from "../Chart";
 import { fetchSinglePollQuestion } from "../../api/index";
+
 
 class Poll extends Component {
   constructor() {
@@ -33,7 +35,9 @@ class Poll extends Component {
         <h2>Poll results</h2>
         <h3>{this.state.pollQuestion}</h3>
         <p>Group asked: @{this.state.pollGroup}</p>
+        <Chart />
       </div>
+    
     );
   }
 }
