@@ -49,6 +49,7 @@ class Poll extends Component {
         <h3>{this.state.pollQuestion}</h3>
         <p className="poll-group">Group asked: @{this.state.pollGroup}</p>
         <p className="date">{this.state.pollId && this.getDate()}</p>
+        <Chart />
       </div>
     );
   }
