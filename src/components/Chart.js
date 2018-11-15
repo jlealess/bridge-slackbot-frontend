@@ -7,14 +7,14 @@ class Chart extends Component {
       super(props);
       this.state = {
           chartData:{
-            labels: ['Yes (5)', 'No (3)', 'Maybe (2)'],
+            labels: [`Yes (${this.props.yes})`, `No (${this.props.no})`, `Maybe (${this.props.maybe})`],
             datasets: [
               {
                 label: 'Legend',
                 data: [
-                  5,
-                  3,
-                  2
+                  this.props.yes,
+                  this.props.no,
+                  this.props.maybe
                 ],
                 backgroundColor: [
                   '#08c39d',
@@ -26,7 +26,7 @@ class Chart extends Component {
           }
         }
     }
-  
+
     static defaultProps = {
       displayTitle: true,
       displayLegend: true,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chart from "../Chart";
-import { fetchSinglePollQuestion } from "../../api/index";
+import { fetchSinglePollQuestion, fetchPollResponses } from "../../api/index";
 
 class Poll extends Component {
   constructor() {
@@ -9,6 +9,9 @@ class Poll extends Component {
       pollGroup: "",
       pollId: "",
       pollQuestion: "",
+      yesCount: 0,
+      noCount: 0,
+      maybeCount: 0,
     }
   }
 
@@ -24,10 +27,30 @@ class Poll extends Component {
           pollQuestion: message.pollQuestion
         })
       );
+    this.getResponses(pollId)
+      .then(res => res.json())
+      .then(res => res.message)
+      .then(res => this.filterResponses(res));
+  }
+
+  filterResponses = (responses) => {
+    const noCount = (responses.filter(response => response.data.answer === "no")).length;
+    const yesCount = (responses.filter(response => response.data.answer === "yes")).length;
+    const maybeCount = (responses.filter(response => response.data.answer === "maybe")).length;
+
+    this.setState({
+      noCount,
+      yesCount,
+      maybeCount,
+    })
   }
 
   getPoll = (id) => {
     return fetchSinglePollQuestion(id);
+  }
+
+  getResponses = (id) => {
+    return fetchPollResponses(id);
   }
 
   getDate = () => {
@@ -41,7 +64,7 @@ class Poll extends Component {
       // minute: "numeric",
     });
   }
-
+  
   render() {
     return (
       <div className="poll">
@@ -49,7 +72,7 @@ class Poll extends Component {
         <h3>{this.state.pollQuestion}</h3>
         <p className="poll-group">Group asked: @{this.state.pollGroup}</p>
         <p className="date">{this.state.pollId && this.getDate()}</p>
-        <Chart />
+        <Chart yes={this.state.yesCount} no={this.state.noCount} maybe={this.state.maybeCount} />
       </div>
     );
   }

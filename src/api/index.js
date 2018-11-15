@@ -37,3 +37,12 @@ export const fetchSinglePollQuestion = (id) => {
   });
 }
 
+export const fetchPollResponses = id => {
+  return fetch(`${API_BASE_URL}/responses`, {
+    method: "post",
+    body: JSON.stringify({
+      id
+    })
+  });
+};
+
