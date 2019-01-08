@@ -6,7 +6,6 @@ const StyledInput = styled.input`
   border: 2px solid ${props => props.theme.darkGrey};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.black};
-  font-weight: bold;
   margin-bottom: 30px;
   padding: 10px;
   width: 100%;

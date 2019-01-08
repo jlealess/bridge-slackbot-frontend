@@ -1,48 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { getPollQuestions } from "./Polls.actions";
-
-const PollList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const Poll = styled.li`
-  padding: 10px 0;
-`;
+import { getPollQuestions, setSortedBy } from "./Polls.actions";
+import Headline from "../Headline";
+import PollList from "../PollList";
+import Sorter from "../Sorter";
 
 class Polls extends Component {
   componentDidMount() {
     this.props.getPollQuestions();
   }
 
+  sortOldestToNewest = polls => {
+    return polls
+      .sort((a, b) => {
+        const dateA = a.id;
+        const dateB = b.id;
+        return dateA - dateB;
+      });
+  };
+
+  sortNewestToOldest = polls => {
+    return this.sortOldestToNewest(polls).reverse();
+  };
+  
   render() {
-    const { polls } = this.props;
+    const { polls, sortedBy, setSortedBy } = this.props;
+    const pollsToRender = (sortedBy === "newest" ? this.sortNewestToOldest(polls) : this.sortOldestToNewest(polls));
 
     return <div>
-      <h2>Previous Polls</h2>
-      <PollList>
-      {polls.map(poll => (
-      <Poll key={poll.id}>
-          <Link to={`/poll/${poll.id}`}>
-            {poll.pollQuestion}
-          </Link>
-        </Poll>
-      ))}
-      </PollList>
+        <Headline headline="Previous Polls">
+          <Sorter 
+            sortedBy={sortedBy}
+            handleSortedByChange={setSortedBy}
+          />
+        </Headline> 
+      <PollList polls={pollsToRender} />
     </div>;
   }
 }
 
 const mapStateToProps = (state) => ({
   polls: state.polls,
+  sortedBy: state.sortedBy
 });
 
 const mapDispatchToProps = {
   getPollQuestions,
+  setSortedBy
 };
 
 export default connect(

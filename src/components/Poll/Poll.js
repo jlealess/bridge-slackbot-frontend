@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
-import Chart from "../Chart";
+import styled from "styled-components";
 import { fetchSinglePollQuestion, fetchPollResponses } from "../../api/index";
+import { getPollDate } from "../../helpers";
+import Card from "../Card";
+import Chart from "../Chart";
+import Headline from "../Headline";
+
+const StyledPoll = styled.div`
+  .poll__headline {
+    font-size: 2.4rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .poll__meta {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.6rem;
+    margin: 0;
+    padding-bottom: .7rem;
+  }
+`;
 
 class Poll extends Component {
   constructor() {
     super();
     this.state = {
+      dataLoaded: false,
       pollGroup: "",
       pollId: "",
       pollQuestion: "",
@@ -39,6 +58,7 @@ class Poll extends Component {
     const maybeCount = (responses.filter(response => response.data.answer === "maybe")).length;
 
     this.setState({
+      dataLoaded: true,
       noCount,
       yesCount,
       maybeCount,
@@ -52,29 +72,19 @@ class Poll extends Component {
   getResponses = (id) => {
     return fetchPollResponses(id);
   }
-
-  getDate = () => {
-    const timeStamp = Number(this.state.pollId);
-    const pollDate = new Date(timeStamp);
-    return pollDate.toLocaleDateString("en-CA", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      // hour: "numeric",
-      // minute: "numeric",
-    });
-  }
   
   render() {
-    return (
-      <div className="poll">
-        <h2>Poll results</h2>
-        <h3>{this.state.pollQuestion}</h3>
-        <p className="poll-group">Group asked: @{this.state.pollGroup}</p>
-        <p className="date">{this.state.pollId && this.getDate()}</p>
-        <Chart yes={this.state.yesCount} no={this.state.noCount} maybe={this.state.maybeCount} />
-      </div>
-    );
+    return <StyledPoll>
+        <Headline headline="Poll Results" />
+        <Card>
+          <h3 className="poll__headline">{this.state.pollQuestion}</h3>
+          <p className="poll__group poll__meta">Group asked: @{this.state.pollGroup}</p>
+          <p className="poll__date poll__meta">
+            {this.state.pollId && getPollDate(this.state.pollId)}
+          </p>
+          {this.state.dataLoaded && <Chart yes={this.state.yesCount} no={this.state.noCount} maybe={this.state.maybeCount} />}
+        </Card>
+      </StyledPoll>;
   }
 }
 

@@ -5,6 +5,7 @@ export const BRIDGEBOT_ACTIONS = {
   SAVE_POLL_GROUPS: "bridgebot/SAVE_POLL_GROUPS",
   SET_POLL_GROUP: "bridgebot/SET_POLL_GROUP",
   SET_POLL_QUESTION: "bridgebot/SET_POLL_QUESTION",
+  SET_SORTED_BY: "bridgebot/SET_SORTED_BY",
 };
 
 export const INITIAL_STATE = {
@@ -16,6 +17,7 @@ export const INITIAL_STATE = {
   selectedPollGroupName: "",
   selectedPollGroupUsers: [],
   submitFormSuccess: false,
+  sortedBy: "newest",
 }
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -64,6 +66,12 @@ export const reducer = (state = INITIAL_STATE, action) => {
         selectedPollGroup: pollGroupId,
         selectedPollGroupName: pollGroupName,
         submitFormSuccess: false,
+      }
+    }
+    case BRIDGEBOT_ACTIONS.SET_SORTED_BY: {
+      return {
+        ...state,
+        sortedBy: action.payload,
       }
     }
     case BRIDGEBOT_ACTIONS.SET_POLL_QUESTION: {

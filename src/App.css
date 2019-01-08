@@ -7,6 +7,11 @@ html {
 body {
   background-color: #f8f8f8;
   color: #525252;
+
+
+    font-family: 'IBM Plex Sans', sans-serif;
+
+
   font-size: 1.8rem;
 }
 
@@ -23,6 +28,7 @@ a:hover {
 }
 
 .content-wrapper {
-  max-width: 800px;
+  margin: 0 auto;
+  max-width: 850px;
   padding: 0 30px;
 }

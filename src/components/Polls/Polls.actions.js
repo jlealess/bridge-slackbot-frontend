@@ -14,3 +14,11 @@ export const getPollQuestions = () => dispatch => {
     .then(res => res.message)
     .then(message => dispatch(savePolls(message)));
 };
+
+export const setSortedBy = e => {
+  const sortedBy = e.target.value;
+  return {
+      type: BRIDGEBOT_ACTIONS.SET_SORTED_BY,
+      payload: sortedBy
+  }
+};

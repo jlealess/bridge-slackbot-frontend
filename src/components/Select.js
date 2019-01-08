@@ -14,7 +14,7 @@ const StyledSelect = styled.select`
   border: 2px solid ${props => props.theme.darkGrey};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.black};
-  font-weight: bold;
+  font-size: 1.6rem;
   height: 45px;
   margin-bottom: 30px;
   padding: 10px;

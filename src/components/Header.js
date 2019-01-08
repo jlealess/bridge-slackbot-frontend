@@ -8,11 +8,8 @@ const StyledImg = styled.img`
 `; 
 
 const StyledHeader = styled.header`
-  align-items: center;
   background: #ffffff;
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.09);
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 40px;
   padding: 25px 30px;
 
@@ -26,7 +23,13 @@ const StyledHeader = styled.header`
     margin: 0;
     margin-left: 15px;
   }
-  
+
+  .header__inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .logo {
     align-items: center;
     display: flex;
@@ -63,16 +66,20 @@ const StyledNav = styled.nav`
 
 const Header = () => (
   <StyledHeader>
-      <Link to={"/"}>
-        <div className="logo">        
-          <StyledImg src={bridgeLogo} alt="bridge logo" />
-          <h1>BridgeBot</h1>
-        </div>
-      </Link>  
-      <StyledNav>
-        <NavLink activeClassName="current" to={"/new-poll"}>New Poll</NavLink>
-        <NavLink activeClassName="current" to={"/polls"}>All Polls</NavLink>
-      </StyledNav>
+    <div className="content-wrapper">
+      <div className="header__inner">
+        <Link to={"/"}>
+          <div className="logo">        
+            <StyledImg src={bridgeLogo} alt="bridge logo" />
+            <h1>BridgeBot</h1>
+          </div>
+        </Link>  
+        <StyledNav>
+          <NavLink activeClassName="current" to={"/new-poll"}>New Poll</NavLink>
+          <NavLink activeClassName="current" to={"/polls"}>All Polls</NavLink>
+        </StyledNav>
+      </div>
+    </div>
   </StyledHeader>
 );
 

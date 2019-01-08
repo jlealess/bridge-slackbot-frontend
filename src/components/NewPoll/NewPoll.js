@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Button from "../Button";
+import Card from "../Card";
+import Headline from "../Headline";
 import Input from "../Input";
 import Label from "../Label";
 import Select from "../Select";
@@ -35,27 +37,34 @@ class NewPoll extends Component {
       submitFormSuccess } = this.props;
     
     return <StyledPoll>
-      <h2>Create New Poll</h2>
-      <form onSubmit={e => {
-          e.preventDefault();
-          handleFormSubmit(pollQuestion, selectedPollGroup, selectedPollGroupName);
-        }}>
-        <div>
-          <Label forValue="pollQuestion" text="Question" />
-          <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
-        </div>
-        <div>
-          <Label forValue="pollUserGroup" text="Channel" />
-          <Select name="pollGroups" value={selectedPollGroup} values={pollGroups} handleChange={handleChangePollGroup} />
-        </div>
-        <div>
-          {submitFormSuccess ? (
-            <SuccessMessage savedPollId={savedPollId} />
-          ) : (
-            <Button label="Submit Poll" disabled={!(pollQuestion.length && selectedPollGroup.length)} />
-          )}
-        </div>
-      </form>
+      <Headline headline="Create New Poll" />
+      <Card>
+        <form onSubmit={e => {
+            e.preventDefault();
+            handleFormSubmit(pollQuestion, selectedPollGroup, selectedPollGroupName);
+          }}>
+          <div>
+            <Label forValue="pollQuestion" text="Question" />
+            <Input type="text" value={pollQuestion} handleChange={handleChangePollQuestion} name="pollQuestion" />
+          </div>
+          <div>
+            <Label forValue="pollUserGroup" text="Channel" />
+          <Select name="pollGroups" value={`${selectedPollGroup}|${selectedPollGroupName}`} values={pollGroups} handleChange={handleChangePollGroup} />
+          </div>
+          <div>
+            {submitFormSuccess ? (
+              <SuccessMessage savedPollId={savedPollId} />
+            ) : (
+              <Button
+                label="Submit Poll"
+                disabled={
+                  !(pollQuestion.length && selectedPollGroup.length)
+                }
+              />
+            )}
+          </div>
+        </form>
+      </Card>
     </StyledPoll>;
   }
 }
